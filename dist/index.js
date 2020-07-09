@@ -61468,13 +61468,13 @@ function init() {
 
   var SCREEN_WIDTH = window.innerWidth,
       SCREEN_HEIGHT = window.innerHeight;
-  var VIEW_ANGLE = 45,
+  var VIEW_ANGLE = 30,
       ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
       NEAR = 0.01,
       FAR = 20000;
   camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  camera.position.set(0, 30, 30); // RENDERER
+  camera.position.set(0, 90, 30); // RENDERER
 
   renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]({
     antialias: true
@@ -61546,18 +61546,18 @@ function init() {
   floorBody.quaternion.setFromAxisAngle(new cannon__WEBPACK_IMPORTED_MODULE_0__["Vec3"](1, 0, 0), -Math.PI / 2);
   world.add(floorBody); //Walls
 
-  dice = new threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceD6"]({
-    size: 1.5,
+  dice = new threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceD10"]({
+    size: 3,
     backColor: '#ffff00'
   });
   scene.add(dice.getObject());
 
   function randomDiceThrow() {
     var yRand = Math.random() * 20;
-    var i = 1;
-    dice.getObject().position.x = -15 - i % 3 * 1.5;
-    dice.getObject().position.y = 2 + Math.floor(i / 3) * 1.5;
-    dice.getObject().position.z = -15 + i % 3 * 1.5;
+    var i = 0;
+    dice.getObject().position.x = -15 - i % 3 * dice.size;
+    dice.getObject().position.y = 2 + Math.floor(i / 3) * dice.size;
+    dice.getObject().position.z = -15 + i % 3 * dice.size;
     dice.getObject().quaternion.x = (Math.random() * 90 - 45) * Math.PI / 180;
     dice.getObject().quaternion.z = (Math.random() * 90 - 45) * Math.PI / 180;
     dice.updateBodyFromMesh();
@@ -61571,8 +61571,10 @@ function init() {
     threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].prepareValues(diceValues);
   }
 
-  setInterval(randomDiceThrow, 3000);
   randomDiceThrow();
+  container.addEventListener('click', function () {
+    randomDiceThrow();
+  });
   requestAnimationFrame(animate);
 }
 
