@@ -61540,7 +61540,7 @@ function init() {
   world.add(floorBody); //Walls
 
   dice = new threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceD10"]({
-    size: 3,
+    size: 4.5,
     backColor: '#ffff'
   });
   scene.add(dice.getObject());

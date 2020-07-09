@@ -104,7 +104,7 @@ function init() {
 
 
     dice = new DiceD10({
-        size: 3,
+        size: 4.5,
         backColor: '#ffff'
     });
     scene.add(dice.getObject());
