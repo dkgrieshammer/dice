@@ -37,6 +37,7 @@ function init() {
     // EVENTS
     // CONTROLS
     controls = new OrbitControls(camera, renderer.domElement);
+    controls.enabled = false;
     // STATS
     // stats = new Stats();
     // stats.domElement.style.position = 'absolute';

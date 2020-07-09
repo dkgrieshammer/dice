@@ -61486,7 +61486,8 @@ function init() {
   container.appendChild(renderer.domElement); // EVENTS
   // CONTROLS
 
-  controls = new OrbitControls(camera, renderer.domElement); // STATS
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enabled = false; // STATS
   // stats = new Stats();
   // stats.domElement.style.position = 'absolute';
   // stats.domElement.style.bottom = '0px';
