@@ -16,8 +16,9 @@ function init() {
     // SCENE
     scene = new THREE.Scene();
     // CAMERA
-    var SCREEN_WIDTH = window.innerWidth,
-        SCREEN_HEIGHT = window.innerHeight;
+    let width = window.innerWidth / 2;
+    var SCREEN_WIDTH = width,
+        SCREEN_HEIGHT = width;
     var VIEW_ANGLE = 30,
         ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
         NEAR = 0.01,
@@ -67,24 +68,17 @@ function init() {
 
 
     // FLOOR
-    var floorMaterial = new THREE.MeshPhongMaterial({
-        color: '#00aa00',
-        side: THREE.DoubleSide
-    });
-    var floorGeometry = new THREE.PlaneGeometry(30, 30, 10, 10);
-    var floor = new THREE.Mesh(floorGeometry, floorMaterial);
-    floor.receiveShadow = true;
-    floor.rotation.x = Math.PI / 2;
-    scene.add(floor);
-    // SKYBOX/FOG
-    var skyBoxGeometry = new THREE.CubeGeometry(10000, 10000, 10000);
-    var skyBoxMaterial = new THREE.MeshPhongMaterial({
-        color: 0x9999ff,
-        side: THREE.BackSide
-    });
-    var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
-    // scene.add(skyBox);
-    scene.fog = new THREE.FogExp2(0x9999ff, 0.00025);
+    // var floorMaterial = new THREE.MeshPhongMaterial({
+    //     color: '#000',
+    //     side: THREE.BackSide
+    // });
+    // var floorGeometry = new THREE.PlaneGeometry(30, 30, 10, 10);
+    // var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+    // floor.receiveShadow = false;
+    // floor.rotation.x = Math.PI / 2;
+    // scene.add(floor);
+
+    scene.fog = new THREE.FogExp2(0x9999ff, 0);
 
     ////////////
     // CUSTOM //
@@ -111,7 +105,7 @@ function init() {
 
     dice = new DiceD10({
         size: 3,
-        backColor: '#ffff00'
+        backColor: '#ffff'
     });
     scene.add(dice.getObject());
 

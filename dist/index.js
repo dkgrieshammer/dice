@@ -61466,8 +61466,9 @@ function init() {
   // SCENE
   scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"](); // CAMERA
 
-  var SCREEN_WIDTH = window.innerWidth,
-      SCREEN_HEIGHT = window.innerHeight;
+  var width = window.innerWidth / 2;
+  var SCREEN_WIDTH = width,
+      SCREEN_HEIGHT = width;
   var VIEW_ANGLE = 30,
       ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
       NEAR = 0.01,
@@ -61510,25 +61511,17 @@ function init() {
   light.shadow.mapSize.width = 1024;
   light.shadow.mapSize.height = 1024;
   scene.add(light); // FLOOR
+  // var floorMaterial = new THREE.MeshPhongMaterial({
+  //     color: '#000',
+  //     side: THREE.BackSide
+  // });
+  // var floorGeometry = new THREE.PlaneGeometry(30, 30, 10, 10);
+  // var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  // floor.receiveShadow = false;
+  // floor.rotation.x = Math.PI / 2;
+  // scene.add(floor);
 
-  var floorMaterial = new three__WEBPACK_IMPORTED_MODULE_1__["MeshPhongMaterial"]({
-    color: '#00aa00',
-    side: three__WEBPACK_IMPORTED_MODULE_1__["DoubleSide"]
-  });
-  var floorGeometry = new three__WEBPACK_IMPORTED_MODULE_1__["PlaneGeometry"](30, 30, 10, 10);
-  var floor = new three__WEBPACK_IMPORTED_MODULE_1__["Mesh"](floorGeometry, floorMaterial);
-  floor.receiveShadow = true;
-  floor.rotation.x = Math.PI / 2;
-  scene.add(floor); // SKYBOX/FOG
-
-  var skyBoxGeometry = new three__WEBPACK_IMPORTED_MODULE_1__["CubeGeometry"](10000, 10000, 10000);
-  var skyBoxMaterial = new three__WEBPACK_IMPORTED_MODULE_1__["MeshPhongMaterial"]({
-    color: 0x9999ff,
-    side: three__WEBPACK_IMPORTED_MODULE_1__["BackSide"]
-  });
-  var skyBox = new three__WEBPACK_IMPORTED_MODULE_1__["Mesh"](skyBoxGeometry, skyBoxMaterial); // scene.add(skyBox);
-
-  scene.fog = new three__WEBPACK_IMPORTED_MODULE_1__["FogExp2"](0x9999ff, 0.00025); ////////////
+  scene.fog = new three__WEBPACK_IMPORTED_MODULE_1__["FogExp2"](0x9999ff, 0); ////////////
   // CUSTOM //
   ////////////
 
@@ -61548,7 +61541,7 @@ function init() {
 
   dice = new threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceD10"]({
     size: 3,
-    backColor: '#ffff00'
+    backColor: '#ffff'
   });
   scene.add(dice.getObject());
 
