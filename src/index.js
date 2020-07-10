@@ -23,6 +23,7 @@ function init() {
         ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
         NEAR = 0.01,
         FAR = 20000;
+    scene.background = new THREE.Color( 'white' );   
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
     scene.add(camera);
     camera.position.set(0, 90, 30);
@@ -69,7 +70,7 @@ function init() {
 
     // FLOOR
     // var floorMaterial = new THREE.MeshPhongMaterial({
-    //     color: '#000',
+    //     color: '#fff',
     //     side: THREE.BackSide
     // });
     // var floorGeometry = new THREE.PlaneGeometry(30, 30, 10, 10);
@@ -105,7 +106,8 @@ function init() {
 
     dice = new DiceD10({
         size: 4.5,
-        backColor: '#ffff'
+        backColor: '#000',
+        fontColor: '#fff'
     });
     scene.add(dice.getObject());
 

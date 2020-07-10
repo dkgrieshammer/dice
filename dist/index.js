@@ -61283,8 +61283,8 @@ class DiceD10 extends DiceObject {
 
         this.scaleFactor = 0.9;
         this.values = 10;
-        this.faceTexts = [' ', '0', '1', '2', '3', '4', '5', '6', '7', '8',
-            '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
+        this.faceTexts = [' ', '1', '2', '3', '4', '5', '6', '7', '8',
+            '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20','21'];
         this.textMargin = 1.0;
         this.mass = 350;
         this.inertia = 9;
@@ -61473,6 +61473,7 @@ function init() {
       ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
       NEAR = 0.01,
       FAR = 20000;
+  scene.background = new three__WEBPACK_IMPORTED_MODULE_1__["Color"]('white');
   camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
   camera.position.set(0, 90, 30); // RENDERER
@@ -61512,7 +61513,7 @@ function init() {
   light.shadow.mapSize.height = 1024;
   scene.add(light); // FLOOR
   // var floorMaterial = new THREE.MeshPhongMaterial({
-  //     color: '#000',
+  //     color: '#fff',
   //     side: THREE.BackSide
   // });
   // var floorGeometry = new THREE.PlaneGeometry(30, 30, 10, 10);
@@ -61541,7 +61542,8 @@ function init() {
 
   dice = new threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceD10"]({
     size: 4.5,
-    backColor: '#ffff'
+    backColor: '#000',
+    fontColor: '#fff'
   });
   scene.add(dice.getObject());
 
