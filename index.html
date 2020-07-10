@@ -6,7 +6,150 @@
 </head>
 
 <body>
-    <div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
-    <script src="./dist/index.js"></script>
+    <form  method="post" accept-charset="UTF-8" enctype="multipart/form-data"
+        id="survey-form">
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                What is the name of the business?<br>
+                <input name="Name"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                What was the first toy produced? And what was the first toy that made it big?<br>
+                <textarea name="Suggestion" cols="75" rows="5" aria-invalid="false"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                What was the new toy in the 1980s that flopped? And which new toy in 2000
+                really took off?<br>
+                <textarea name="Suggestion" cols="75" rows="5" aria-invalid="false"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                How many family members are part of the business?<br>
+                <input name="Name" type="number"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                How many owners in total?<br>
+                <input name="Name" type="number"></input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                What kind of Board is there, if any? (Advisory vs. Fiduciary, Family-Only vs.
+                Majority Family vs. Minority Family, Family Chair vs. Non-Family Chair,
+                interventionist vs. laissez-faire, etc.)<br>
+                <textarea name="Suggestion" cols="75" rows="5" aria-invalid="false"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                How close is current leadership to key suppliers, distributors, JV partners,
+                and investment bankers? (Determined by Dice Roll)
+                VERY CLOSE MODERATE NOT CLOSE<br>
+                <span>
+                    <label><input type="radio" name="Rating" value="1"><span style="margin-left:0.5em">1</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="2"><span style="margin-left:0.5em">2</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="3"><span style="margin-left:0.5em">3</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="4"><span style="margin-left:0.5em">4</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="5"><span style="margin-left:0.5em">5</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="6"><span style="margin-left:0.5em">6</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="7"><span style="margin-left:0.5em">7</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="8"><span style="margin-left:0.5em">8</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="9"><span style="margin-left:0.5em">9</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="10"><span
+                            style="margin-left:0.5em">10</span></label>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                How good is overall family harmony? (Determined by Dice Roll)
+                GOOD FAIR POOR<br>
+                <span>
+                    <label><input type="radio" name="Rating" value="1"><span style="margin-left:0.5em">1</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="2"><span style="margin-left:0.5em">2</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="3"><span style="margin-left:0.5em">3</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="4"><span style="margin-left:0.5em">4</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="5"><span style="margin-left:0.5em">5</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="6"><span style="margin-left:0.5em">6</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="7"><span style="margin-left:0.5em">7</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="8"><span style="margin-left:0.5em">8</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="9"><span style="margin-left:0.5em">9</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Rating" value="10"><span
+                            style="margin-left:0.5em">10</span></label>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                Should this session be offered again in the future?<br>
+                <span>
+                    <label><input type="radio" name="Future" value="yes"><span>yes</span></label>
+                </span>
+                <span style="margin-left:1em">
+                    <label><input type="radio" name="Future" value="no"><span style="margin-left:1em">no</span></label>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                What are two or three core values that the business has embraced since it
+                started, and has never compromised on?<br>
+                <textarea name="Suggestion" cols="75" rows="5" aria-invalid="false"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
+                Has the trend in the past been business first, or family first?<br>
+                <textarea name="Suggestion" cols="75" rows="5" aria-invalid="false"></textarea>
+            </div>
+        </div>
+    </form>
+
+    <!-- <div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+    <script src="./dist/index.js"></script> -->
 </body>
+
 </html>
