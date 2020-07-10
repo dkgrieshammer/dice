@@ -61283,8 +61283,8 @@ class DiceD10 extends DiceObject {
 
         this.scaleFactor = 0.9;
         this.values = 10;
-        this.faceTexts = [' ', '1', '2', '3', '4', '5', '6', '7', '8',
-            '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20','21'];
+        this.faceTexts = [' ', '0', '1', '2', '3', '4', '5', '6', '7', '8',
+            '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
         this.textMargin = 1.0;
         this.mass = 350;
         this.inertia = 9;
@@ -61441,6 +61441,77 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
+/***/ "./src/OwnersForumDice.js":
+/*!********************************!*\
+  !*** ./src/OwnersForumDice.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return OwnersForumDice; });
+/* harmony import */ var threejs_dice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! threejs-dice */ "./node_modules/threejs-dice/lib/dice.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var OwnersForumDice = /*#__PURE__*/function (_DiceD) {
+  _inherits(OwnersForumDice, _DiceD);
+
+  var _super = _createSuper(OwnersForumDice);
+
+  function OwnersForumDice(options) {
+    var _this;
+
+    _classCallCheck(this, OwnersForumDice);
+
+    _this = _super.call(this, options);
+    _this.faceTexts = [' ', '1', '2', '3', '4', '5', '6.', '7', '8', '9.', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'];
+
+    _this.create();
+
+    return _this;
+  }
+
+  _createClass(OwnersForumDice, [{
+    key: "getUpsideValue",
+    value: function getUpsideValue() {
+      return _get(_getPrototypeOf(OwnersForumDice.prototype), "getUpsideValue", this).call(this) + 1; // we changed faceTexts to start counting with 1
+    }
+  }]);
+
+  return OwnersForumDice;
+}(threejs_dice__WEBPACK_IMPORTED_MODULE_0__["DiceD10"]);
+
+
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -61454,144 +61525,153 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var cannon__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cannon__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
 /* harmony import */ var threejs_dice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! threejs-dice */ "./node_modules/threejs-dice/lib/dice.js");
+/* harmony import */ var _OwnersForumDice_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OwnersForumDice.js */ "./src/OwnersForumDice.js");
 
 
 
-window.OrbitControls = __webpack_require__(/*! three-orbit-controls */ "./node_modules/three-orbit-controls/index.js")(three__WEBPACK_IMPORTED_MODULE_1__); // standard global variables
 
-var container, scene, camera, renderer, controls, stats, world, dice;
-init();
+window.OrbitControls = __webpack_require__(/*! three-orbit-controls */ "./node_modules/three-orbit-controls/index.js")(three__WEBPACK_IMPORTED_MODULE_1__);
 
-function init() {
-  // SCENE
-  scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"](); // CAMERA
+window.rollingDice = function (elementId) {
+  // standard global variables
+  var container, scene, camera, renderer, controls, world, dice;
+  init();
 
-  var width = window.innerWidth / 2;
-  var SCREEN_WIDTH = width,
-      SCREEN_HEIGHT = width;
-  var VIEW_ANGLE = 30,
-      ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
-      NEAR = 0.01,
-      FAR = 20000;
-  scene.background = new three__WEBPACK_IMPORTED_MODULE_1__["Color"]('white');
-  camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](VIEW_ANGLE, ASPECT, NEAR, FAR);
-  scene.add(camera);
-  camera.position.set(0, 90, 30); // RENDERER
+  function init() {
+    // SCENE
+    scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"](); // CAMERA
 
-  renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]({
-    antialias: true
-  });
-  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = three__WEBPACK_IMPORTED_MODULE_1__["PCFSoftShadowMap"];
-  container = document.getElementById('ThreeJS');
-  container.appendChild(renderer.domElement); // EVENTS
-  // CONTROLS
+    var width = 300;
+    var SCREEN_WIDTH = 500,
+        SCREEN_HEIGHT = 300;
+    var VIEW_ANGLE = 30,
+        ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
+        NEAR = 0.01,
+        FAR = 20000;
+    scene.background = new three__WEBPACK_IMPORTED_MODULE_1__["Color"]('white');
+    camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](VIEW_ANGLE, ASPECT, NEAR, FAR);
+    scene.add(camera);
+    camera.position.set(0, 90, 30); // RENDERER
 
-  controls = new OrbitControls(camera, renderer.domElement);
-  controls.enabled = false; // STATS
-  // stats = new Stats();
-  // stats.domElement.style.position = 'absolute';
-  // stats.domElement.style.bottom = '0px';
-  // stats.domElement.style.zIndex = 100;
-  // container.appendChild(stats.domElement);
+    renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]({
+      antialias: true
+    });
+    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = three__WEBPACK_IMPORTED_MODULE_1__["PCFSoftShadowMap"];
+    container = document.getElementById(elementId);
+    container.appendChild(renderer.domElement); // EVENTS
+    // CONTROLS
 
-  var ambient = new three__WEBPACK_IMPORTED_MODULE_1__["AmbientLight"]('#ffffff', 0.3);
-  scene.add(ambient);
-  var directionalLight = new three__WEBPACK_IMPORTED_MODULE_1__["DirectionalLight"]('#ffffff', 0.5);
-  directionalLight.position.x = -1000;
-  directionalLight.position.y = 1000;
-  directionalLight.position.z = 1000;
-  scene.add(directionalLight);
-  var light = new three__WEBPACK_IMPORTED_MODULE_1__["SpotLight"](0xefdfd5, 1.3);
-  light.position.y = 100;
-  light.target.position.set(0, 0, 0);
-  light.castShadow = true;
-  light.shadow.camera.near = 50;
-  light.shadow.camera.far = 110;
-  light.shadow.mapSize.width = 1024;
-  light.shadow.mapSize.height = 1024;
-  scene.add(light); // FLOOR
-  // var floorMaterial = new THREE.MeshPhongMaterial({
-  //     color: '#fff',
-  //     side: THREE.BackSide
-  // });
-  // var floorGeometry = new THREE.PlaneGeometry(30, 30, 10, 10);
-  // var floor = new THREE.Mesh(floorGeometry, floorMaterial);
-  // floor.receiveShadow = false;
-  // floor.rotation.x = Math.PI / 2;
-  // scene.add(floor);
+    controls = new OrbitControls(camera, renderer.domElement);
+    controls.enabled = false; // STATS
+    // stats = new Stats();
+    // stats.domElement.style.position = 'absolute';
+    // stats.domElement.style.bottom = '0px';
+    // stats.domElement.style.zIndex = 100;
+    // container.appendChild(stats.domElement);
 
-  scene.fog = new three__WEBPACK_IMPORTED_MODULE_1__["FogExp2"](0x9999ff, 0); ////////////
-  // CUSTOM //
-  ////////////
+    var ambient = new three__WEBPACK_IMPORTED_MODULE_1__["AmbientLight"]('#ffffff', 0.3);
+    scene.add(ambient);
+    var directionalLight = new three__WEBPACK_IMPORTED_MODULE_1__["DirectionalLight"]('#ffffff', 0.5);
+    directionalLight.position.x = -1000;
+    directionalLight.position.y = 1000;
+    directionalLight.position.z = 1000;
+    scene.add(directionalLight);
+    var light = new three__WEBPACK_IMPORTED_MODULE_1__["SpotLight"](0xefdfd5, 1.3);
+    light.position.y = 100;
+    light.target.position.set(0, 0, 0);
+    light.castShadow = true;
+    light.shadow.camera.near = 50;
+    light.shadow.camera.far = 110;
+    light.shadow.mapSize.width = 1024;
+    light.shadow.mapSize.height = 1024;
+    scene.add(light); // FLOOR
+    // var floorMaterial = new THREE.MeshPhongMaterial({
+    //     color: '#fff',
+    //     side: THREE.BackSide
+    // });
+    // var floorGeometry = new THREE.PlaneGeometry(30, 30, 10, 10);
+    // var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+    // floor.receiveShadow = false;
+    // floor.rotation.x = Math.PI / 2;
+    // scene.add(floor);
 
-  world = new cannon__WEBPACK_IMPORTED_MODULE_0__["World"]();
-  world.gravity.set(0, -9.82 * 20, 0);
-  world.broadphase = new cannon__WEBPACK_IMPORTED_MODULE_0__["NaiveBroadphase"]();
-  world.solver.iterations = 16;
-  threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].setWorld(world); //Floor
+    scene.fog = new three__WEBPACK_IMPORTED_MODULE_1__["FogExp2"](0x9999ff, 0); ////////////
+    // CUSTOM //
+    ////////////
 
-  var floorBody = new cannon__WEBPACK_IMPORTED_MODULE_0__["Body"]({
-    mass: 0,
-    shape: new cannon__WEBPACK_IMPORTED_MODULE_0__["Plane"](),
-    material: threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].floorBodyMaterial
-  });
-  floorBody.quaternion.setFromAxisAngle(new cannon__WEBPACK_IMPORTED_MODULE_0__["Vec3"](1, 0, 0), -Math.PI / 2);
-  world.add(floorBody); //Walls
+    world = new cannon__WEBPACK_IMPORTED_MODULE_0__["World"]();
+    world.gravity.set(0, -9.82 * 20, 0);
+    world.broadphase = new cannon__WEBPACK_IMPORTED_MODULE_0__["NaiveBroadphase"]();
+    world.solver.iterations = 16;
+    threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].setWorld(world); //Floor
 
-  dice = new threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceD10"]({
-    size: 4.5,
-    backColor: '#000',
-    fontColor: '#fff'
-  });
-  scene.add(dice.getObject());
+    var floorBody = new cannon__WEBPACK_IMPORTED_MODULE_0__["Body"]({
+      mass: 0,
+      shape: new cannon__WEBPACK_IMPORTED_MODULE_0__["Plane"](),
+      material: threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].floorBodyMaterial
+    });
+    floorBody.quaternion.setFromAxisAngle(new cannon__WEBPACK_IMPORTED_MODULE_0__["Vec3"](1, 0, 0), -Math.PI / 2);
+    world.add(floorBody); //Walls
 
-  function randomDiceThrow() {
-    var yRand = Math.random() * 20;
-    var i = 0;
-    dice.getObject().position.x = -15 - i % 3 * dice.size;
-    dice.getObject().position.y = 2 + Math.floor(i / 3) * dice.size;
-    dice.getObject().position.z = -15 + i % 3 * dice.size;
-    dice.getObject().quaternion.x = (Math.random() * 90 - 45) * Math.PI / 180;
-    dice.getObject().quaternion.z = (Math.random() * 90 - 45) * Math.PI / 180;
-    dice.updateBodyFromMesh();
-    var rand = Math.random() * 5;
-    dice.getObject().body.velocity.set(25 + rand, 40 + yRand, 15 + rand);
-    dice.getObject().body.angularVelocity.set(20 * Math.random() - 10, 20 * Math.random() - 10, 20 * Math.random() - 10);
-    var diceValues = {
-      dice: dice,
-      value: i + 1
-    };
-    threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].prepareValues(diceValues);
+    dice = new _OwnersForumDice_js__WEBPACK_IMPORTED_MODULE_3__["default"]({
+      size: 6,
+      backColor: '#000',
+      fontColor: '#fff'
+    });
+    scene.add(dice.getObject());
+
+    function randomDiceThrow() {
+      var initial = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var yRand = Math.random() * 20;
+      var i = 0;
+      dice.getObject().position.x = -15 - i % 3 * dice.size;
+      dice.getObject().position.y = 2 + Math.floor(i / 3) * dice.size;
+      dice.getObject().position.z = -15 + i % 3 * dice.size;
+      dice.getObject().quaternion.x = (Math.random() * 90 - 45) * Math.PI / 180;
+      dice.getObject().quaternion.z = (Math.random() * 90 - 45) * Math.PI / 180;
+      dice.updateBodyFromMesh();
+      var rand = Math.random() * 5;
+      dice.getObject().body.velocity.set(25 + rand, 40 + yRand, 15 + rand);
+      dice.getObject().body.angularVelocity.set(20 * Math.random() - 10, 20 * Math.random() - 10, 20 * Math.random() - 10);
+      var diceValues = {
+        dice: dice,
+        value: i + 1
+      };
+
+      if (!initial) {
+        threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].prepareValues(diceValues);
+      }
+    }
+
+    randomDiceThrow(true);
+    container.addEventListener('click', function () {
+      randomDiceThrow();
+    });
+    requestAnimationFrame(animate);
   }
 
-  randomDiceThrow();
-  container.addEventListener('click', function () {
-    randomDiceThrow();
-  });
-  requestAnimationFrame(animate);
-}
+  function animate() {
+    updatePhysics();
+    render();
+    update();
+    requestAnimationFrame(animate);
+  }
 
-function animate() {
-  updatePhysics();
-  render();
-  update();
-  requestAnimationFrame(animate);
-}
+  function updatePhysics() {
+    world.step(1.0 / 60.0);
+    dice.updateMeshFromBody();
+  }
 
-function updatePhysics() {
-  world.step(1.0 / 60.0);
-  dice.updateMeshFromBody();
-}
+  function update() {
+    controls.update(); // stats.update();
+  }
 
-function update() {
-  controls.update(); // stats.update();
-}
-
-function render() {
-  renderer.render(scene, camera);
-}
+  function render() {
+    renderer.render(scene, camera);
+  }
+};
 
 /***/ }),
 

@@ -52,6 +52,7 @@
                 How close is current leadership to key suppliers, distributors, JV partners,
                 and investment bankers? (Determined by Dice Roll)
                 VERY CLOSE MODERATE NOT CLOSE<br>
+                <div id="leadership"></div>
                 <span>
                     <label><input type="radio" name="Rating" value="1"><span style="margin-left:0.5em">1</span></label>
                 </span>
@@ -89,6 +90,7 @@
             <div class="col-md-12" style="font-weight:bold; margin-bottom:15px;">
                 How good is overall family harmony? (Determined by Dice Roll)
                 GOOD FAIR POOR<br>
+                <div id="harmony"></div>
                 <span>
                     <label><input type="radio" name="Rating" value="1"><span style="margin-left:0.5em">1</span></label>
                 </span>
@@ -137,8 +139,12 @@
         </div>
     </form>
 
-    <!-- <div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
-    <script src="./dist/index.js"></script> -->
+    
+    <script src="./dist/index.js"></script>
+    <script>
+        rollingDice('leadership');
+        rollingDice('harmony');
+    </script>
 </body>
 
 </html>
