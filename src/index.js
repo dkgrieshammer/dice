@@ -7,7 +7,7 @@ import OwnersForumDice from "./OwnersForumDice.js"
 window.OrbitControls = require('three-orbit-controls')(THREE)
 
 
-window.rollingDice = function(elementId) {
+window.rollingDice = function(elementId, radioFieldName) {
     // standard global variables
     var container, scene, camera, renderer, controls, world, dice;
     init();
@@ -112,6 +112,7 @@ window.rollingDice = function(elementId) {
         scene.add(dice.getObject());
 
         function randomDiceThrow(initial = false) {
+            
             let yRand = Math.random() * 20
             let i = 0;
             dice.getObject().position.x = -15 - (i % 3) * dice.size;
@@ -124,13 +125,15 @@ window.rollingDice = function(elementId) {
             dice.getObject().body.velocity.set(25 + rand, 40 + yRand, 15 + rand);
             dice.getObject().body.angularVelocity.set(20 * Math.random() - 10, 20 * Math.random() - 10, 20 *
                 Math.random() - 10);
-
+            let value = Math.floor((Math.random() * 10) + 1);
             let diceValues = {
                 dice: dice,
-                value: i + 1
+                value: value
             };
             if(!initial){
                 DiceManager.prepareValues(diceValues);
+                console.log('dice-value:'+value);
+                updateRadioField(value);
             }
         }
         randomDiceThrow(true);
@@ -164,5 +167,9 @@ window.rollingDice = function(elementId) {
 
     function render() {
         renderer.render(scene, camera);
+    }
+
+    function updateRadioField(value){
+        document.getElementsByName(radioFieldName)[value-1].checked=true;
     }
 }

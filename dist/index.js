@@ -61532,7 +61532,7 @@ __webpack_require__.r(__webpack_exports__);
 
 window.OrbitControls = __webpack_require__(/*! three-orbit-controls */ "./node_modules/three-orbit-controls/index.js")(three__WEBPACK_IMPORTED_MODULE_1__);
 
-window.rollingDice = function (elementId) {
+window.rollingDice = function (elementId, radioFieldName) {
   // standard global variables
   var container, scene, camera, renderer, controls, world, dice;
   init();
@@ -61635,13 +61635,16 @@ window.rollingDice = function (elementId) {
       var rand = Math.random() * 5;
       dice.getObject().body.velocity.set(25 + rand, 40 + yRand, 15 + rand);
       dice.getObject().body.angularVelocity.set(20 * Math.random() - 10, 20 * Math.random() - 10, 20 * Math.random() - 10);
+      var value = Math.floor(Math.random() * 10 + 1);
       var diceValues = {
         dice: dice,
-        value: i + 1
+        value: value
       };
 
       if (!initial) {
         threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].prepareValues(diceValues);
+        console.log('dice-value:' + value);
+        updateRadioField(value);
       }
     }
 
@@ -61670,6 +61673,10 @@ window.rollingDice = function (elementId) {
 
   function render() {
     renderer.render(scene, camera);
+  }
+
+  function updateRadioField(value) {
+    document.getElementsByName(radioFieldName)[value - 1].checked = true;
   }
 };
 
