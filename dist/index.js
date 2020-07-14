@@ -61512,6 +61512,71 @@ var OwnersForumDice = /*#__PURE__*/function (_DiceD) {
 
 /***/ }),
 
+/***/ "./src/RandomDice.js":
+/*!***************************!*\
+  !*** ./src/RandomDice.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return RandomDice; });
+/* harmony import */ var threejs_dice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! threejs-dice */ "./node_modules/threejs-dice/lib/dice.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var RandomDice = /*#__PURE__*/function (_DiceD) {
+  _inherits(RandomDice, _DiceD);
+
+  var _super = _createSuper(RandomDice);
+
+  function RandomDice(options) {
+    var _this;
+
+    _classCallCheck(this, RandomDice);
+
+    _this = _super.call(this, options);
+    _this.stableCounter = 0; //check if still moving
+
+    _this.create();
+
+    return _this;
+  } // check = () => {
+  //   if(this.isFinished()) {
+  //     this.stableCounter ++
+  //     if(this.stableCounter === 50) {
+  //     }
+  //   }
+  // }
+  // dispatchResult(callback) {
+  // }
+
+
+  return RandomDice;
+}(threejs_dice__WEBPACK_IMPORTED_MODULE_0__["DiceD10"]);
+
+
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -61526,6 +61591,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
 /* harmony import */ var threejs_dice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! threejs-dice */ "./node_modules/threejs-dice/lib/dice.js");
 /* harmony import */ var _OwnersForumDice_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OwnersForumDice.js */ "./src/OwnersForumDice.js");
+/* harmony import */ var _RandomDice_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RandomDice.js */ "./src/RandomDice.js");
+/* harmony import */ var _wall__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./wall */ "./src/wall.js");
+
+
 
 
 
@@ -61534,12 +61603,15 @@ window.OrbitControls = __webpack_require__(/*! three-orbit-controls */ "./node_m
 
 window.rollingDice = function (elementId, radioFieldName) {
   // standard global variables
-  var container, scene, camera, renderer, controls, world, dice;
+  var container, scene, camera, renderer, controls, world, dice, dice10;
   init();
 
   function init() {
     // SCENE
-    scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"](); // CAMERA
+    scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"](); // for debugging purposes
+
+    window.scene = scene;
+    window.THREE = three__WEBPACK_IMPORTED_MODULE_1__; // CAMERA
 
     var width = 300;
     var SCREEN_WIDTH = 500,
@@ -61551,7 +61623,8 @@ window.rollingDice = function (elementId, radioFieldName) {
     scene.background = new three__WEBPACK_IMPORTED_MODULE_1__["Color"]('white');
     camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](VIEW_ANGLE, ASPECT, NEAR, FAR);
     scene.add(camera);
-    camera.position.set(0, 90, 30); // RENDERER
+    camera.position.set(0, 90, 100); // Here u set Cam Pos with x y z
+    // RENDERER
 
     renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]({
       antialias: true
@@ -61615,15 +61688,55 @@ window.rollingDice = function (elementId, radioFieldName) {
     floorBody.quaternion.setFromAxisAngle(new cannon__WEBPACK_IMPORTED_MODULE_0__["Vec3"](1, 0, 0), -Math.PI / 2);
     world.add(floorBody); //Walls
 
+    var wall = new _wall__WEBPACK_IMPORTED_MODULE_5__["default"](scene, world, threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].floorBodyMaterial);
+    wall.setSize(1, 10, 80);
+
+    var rotateY = function rotateY(obj, angle) {
+      obj.quaternion.set(Math.cos(angle), 0, Math.sin(angle), 0);
+    }; // const Wall1 = wallFactory(2,50,100)
+    // world.add(Wall1)
+    // console.log(Wall1)    
+    // dice10 = new RandomDice({size: 5});
+    // dice10.name = "Dice10"
+    // scene.add(dice10.getObject());
+    // dice10.getObject().position.x = 1;
+    // dice10.getObject().position.y = 1;
+    // dice10.getObject().position.z = -20;
+    // dice10.getObject().body.velocity.set(0,0,0)
+    // dice10.updateBodyFromMesh()
+    // const testCall = (e) => console.log("Result will be ", e)
+    // dice10.emulateThrow(testCall)
+
+
     dice = new _OwnersForumDice_js__WEBPACK_IMPORTED_MODULE_3__["default"]({
+      size: 6,
+      backColor: '#000',
+      fontColor: '#fff'
+    });
+    var diceCopy = new _OwnersForumDice_js__WEBPACK_IMPORTED_MODULE_3__["default"]({
       size: 6,
       backColor: '#000',
       fontColor: '#fff'
     });
     scene.add(dice.getObject());
 
+    var setRandomPosition = function setRandomPosition(obj) {
+      var yRand = Math.random() * 20;
+      ob.getObject().position.x = -15 - i % 3 * ob.size;
+      ob.getObject().position.y = 2 + Math.floor(i / 3) * ob.size;
+      ob.getObject().position.z = -15 + i % 3 * ob.size;
+      ob.getObject().quaternion.x = (Math.random() * 90 - 45) * Math.PI / 180;
+      ob.getObject().quaternion.z = (Math.random() * 90 - 45) * Math.PI / 180;
+      ob.updateBodyFromMesh();
+      var rand = Math.random() * 5;
+      ob.getObject().body.velocity.set(25 + rand, 40 + yRand, 15 + rand);
+      ob.getObject().body.angularVelocity.set(20 * Math.random() - 10, 20 * Math.random() - 10, 20 * Math.random() - 10);
+      return obj;
+    };
+
     function randomDiceThrow() {
       var initial = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      console.log("random trow called");
       var yRand = Math.random() * 20;
       var i = 0;
       dice.getObject().position.x = -15 - i % 3 * dice.size;
@@ -61635,17 +61748,15 @@ window.rollingDice = function (elementId, radioFieldName) {
       var rand = Math.random() * 5;
       dice.getObject().body.velocity.set(25 + rand, 40 + yRand, 15 + rand);
       dice.getObject().body.angularVelocity.set(20 * Math.random() - 10, 20 * Math.random() - 10, 20 * Math.random() - 10);
-      var value = Math.floor(Math.random() * 10 + 1);
-      var diceValues = {
-        dice: dice,
-        value: value
-      };
-
-      if (!initial) {
-        threejs_dice__WEBPACK_IMPORTED_MODULE_2__["DiceManager"].prepareValues(diceValues);
-        console.log('dice-value:' + value);
-        updateRadioField(value);
-      }
+      var value = Math.floor(Math.random() * 10 + 1); // let diceValues = {
+      //     dice: dice,
+      //     value: value
+      // };
+      // DiceManager.prepareValues(diceValues);
+      // if(!initial){
+      //     console.log('dice-value:'+value);
+      //     updateRadioField(value);
+      // }
     }
 
     randomDiceThrow(true);
@@ -61664,7 +61775,7 @@ window.rollingDice = function (elementId, radioFieldName) {
 
   function updatePhysics() {
     world.step(1.0 / 60.0);
-    dice.updateMeshFromBody();
+    dice.updateMeshFromBody(); // dice10.updateMeshFromBody()
   }
 
   function update() {
@@ -61682,6 +61793,88 @@ window.rollingDice = function (elementId, radioFieldName) {
 
 /***/ }),
 
+/***/ "./src/wall.js":
+/*!*********************!*\
+  !*** ./src/wall.js ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+/* harmony import */ var cannon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! cannon */ "./node_modules/cannon/build/cannon.js");
+/* harmony import */ var cannon__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(cannon__WEBPACK_IMPORTED_MODULE_1__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
+
+var Wall = /*#__PURE__*/function () {
+  function Wall(scene, world, cMat) {
+    _classCallCheck(this, Wall);
+
+    this.scene = scene; // THREE SCENE (visual)
+
+    this.world = world; // CANNON WORLD (physic simulation)
+
+    this.cMat = cMat;
+    this.pos = new three__WEBPACK_IMPORTED_MODULE_0__["Vector3"](0, 0, 0);
+    this.size = new three__WEBPACK_IMPORTED_MODULE_0__["Vector3"](1, 1, 1);
+    this.init();
+  }
+
+  _createClass(Wall, [{
+    key: "init",
+    value: function init() {
+      //THREE PART
+      var geo = new three__WEBPACK_IMPORTED_MODULE_0__["BoxGeometry"](1, 1, 1);
+      var mat = new three__WEBPACK_IMPORTED_MODULE_0__["MeshBasicMaterial"]({
+        color: 0xFF0000
+      });
+      this.box = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](geo, mat); //CANNON PART
+
+      this.cShape = new cannon__WEBPACK_IMPORTED_MODULE_1__["Box"](new cannon__WEBPACK_IMPORTED_MODULE_1__["Vec3"](.5, .5, .5));
+      this.cBox = new cannon__WEBPACK_IMPORTED_MODULE_1__["Body"]({
+        mass: 0,
+        shape: this.cShape,
+        position: new cannon__WEBPACK_IMPORTED_MODULE_1__["Vec3"](0, 0, 0)
+      });
+      this.world.add(this.cBox);
+      this.scene.add(this.box);
+    }
+  }, {
+    key: "setSize",
+    value: function setSize(x, y, z) {
+      this.size.set(x, y, z);
+      this.box.geometry.scale(x, y, z);
+      this.cShape.halfExtents.set(x, y, z);
+      this.cShape.updateConvexPolyhedronRepresentation();
+      this.cShape.updateBoundingSphereRadius(); // this.cBox.computeAABB()
+
+      this.cBox.updateMassProperties();
+      this.cBox.updateBoundingRadius();
+    }
+  }, {
+    key: "setPos",
+    value: function setPos(x, y, z) {
+      this.pos.set(x, y, z);
+      this.box.position.set(x, y, z);
+      this.cBox.position.set(x, y, z);
+    }
+  }]);
+
+  return Wall;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Wall);
+
+/***/ }),
+
 /***/ 0:
 /*!****************************!*\
   !*** multi ./src/index.js ***!
@@ -61689,7 +61882,7 @@ window.rollingDice = function (elementId, radioFieldName) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/yannick/Projects/bumi/dice/src/index.js */"./src/index.js");
+module.exports = __webpack_require__(/*! /Users/david/Documents/dev/bumidice/dice/src/index.js */"./src/index.js");
 
 
 /***/ })
